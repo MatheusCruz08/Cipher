@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lacquer&display=swap');
+
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Lacquer', serif;
   background-color: black;
 }
 
 :root {
   --tamanho-header: 160px;
-  --tamanho-banner: calc(75vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-banner: calc(90vh - var(--tamanho-header) - var(--tamanho-footer));
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-footer: 65px;
@@ -29,6 +30,7 @@ body {
 .header .container {
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   height: 100%;
 }
 
@@ -65,8 +67,10 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: auto;
+  background-image: url('../css/imagemhome.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 .banner .container {
@@ -102,11 +106,18 @@ body {
 .box img {
   width: 170px;
   height: 170px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.box img:hover {
+    transform: scale(1.2);
 }
 
 .social .container .boxes {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;       
+  justify-content: center; 
+  gap: 40px;            
   width: 100%;
   padding: 30px 0;
 }
@@ -119,6 +130,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: calc(33.33% - 40px); 
+  min-width: 200px;         
 }
 
 /* FOOTER */
@@ -143,9 +156,14 @@ body {
 /* LOGIN */
 
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+  height: var(--tamanho-login); 
+  color: white;
+  background-image: url('../css/imagemhome.png');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
 }
 
 .login .container {
@@ -155,20 +173,21 @@ body {
 }
 
 .card {
-  width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
+  width: 40%;
+  background-color: #000000;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: #9c0303;
   flex-direction: column;
   height: fit-content;
-  padding: 20px 0;
+  padding: 50px 0;
 }
 
 .card h2 {
   margin: 0;
+  align-items: center;
   font-size: 30px;
 }
 
@@ -183,6 +202,7 @@ body {
 .formulario span {
   font-size: 15px;
   font-weight: 800;
+  align-items: center;
 }
 
 .formulario input {
