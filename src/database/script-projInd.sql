@@ -7,7 +7,7 @@ idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(60),
 email VARCHAR(80),
 senha VARCHAR(30),
-dtNasc DATE 
+dtNasc DATE
 );
 
 CREATE TABLE pergunta (
@@ -24,3 +24,6 @@ CONSTRAINT usuarioFk FOREIGN KEY (fkUsuario)
 CONSTRAINT perguntaFk FOREIGN KEY (fkPergunta)
 	REFERENCES pergunta(idPergunta)
 );
+
+
+select * from usuario;

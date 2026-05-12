@@ -75,6 +75,10 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
+          <div class="campo">
+            <span>Data de nascimento</span>
+            <input id="dtNascimento" type="text" placeholder="0000-00-00">
+          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -113,6 +117,7 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var codigoVar = codigo_input.value;
+    var dtNascVar = dtNascimento.value
     var idEmpresaVincular
 
     // Verificando se há algum campo em branco
@@ -121,7 +126,8 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      codigoVar == "" ||
+      dtNascVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -133,18 +139,7 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+   
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -158,6 +153,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
+        dtNascServer: dtNascVar,
         idEmpresaVincularServer: idEmpresaVincular
       }),
     })
