@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -56,10 +56,6 @@
                          Assim que inserir vá para o script abaixo.
                      -->
           <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
@@ -77,7 +73,7 @@
           </div>
           <div class="campo">
             <span>Data de nascimento</span>
-            <input id="dtNascimento" type="text" placeholder="0000-00-00">
+            <input id="dtNascimento" type="text" placeholder="0000-00-00" maxlength="10">
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
@@ -116,9 +112,8 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
     var dtNascVar = dtNascimento.value
-    var idEmpresaVincular
+    
 
     // Verificando se há algum campo em branco
     if (
@@ -126,7 +121,6 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      codigoVar == "" ||
       dtNascVar == ""
     ) {
       cardErro.style.display = "block";
@@ -153,8 +147,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        dtNascServer: dtNascVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        dtNascServer: dtNascVar
       }),
     })
       .then(function (resposta) {
@@ -185,7 +178,7 @@
   }
 
   // Listando empresas cadastradas 
-  function listar() {
+  /* function listar() {
     fetch("/empresas/listar", {
       method: "GET",
     })
@@ -203,7 +196,7 @@
         console.log(`#ERRO: ${resposta}`);
       });
   }
-
+ */
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
