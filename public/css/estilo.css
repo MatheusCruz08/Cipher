@@ -101,10 +101,73 @@ body {
 
 /* MISSÃO VISÃO VALORES */
 
-.social {
-  background-color: #fff;
-  display: flex;
 
+/* Estado inicial: escondido e levemente deslocado */
+.hidden-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, visibility;
+}
+
+/* Estado final: visível e na posição original */
+.show-element {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.secao-conteudo {
+  background-color: #000000;
+  padding: 60px 0;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+.secao-conteudo .container {
+  display: flex;
+  gap: 40px; /* Espaçamento entre texto e imagem */
+  align-items: flex-start; /* Alinha no topo */
+}
+
+.bloco-texto {
+  flex: 2; /* O texto ocupa 2 partes do espaço */
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.bloco-img {
+  flex: 1; /* A imagem ocupa 1 parte */
+  position: static; /* Efeito moderno: imagem acompanha o scroll */
+  top: 100px;
+}
+
+.bloco-img img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: transform 0.5s ease;
+}
+
+/* Animação suave ao passar o mouse */
+.bloco-img img:hover {
+  transform: scale(1.03);
+}
+
+/* Responsividade: Se a tela for pequena, a imagem vai para cima */
+@media (max-width: 768px) {
+  .secao-conteudo .container {
+    flex-direction: column;
+  }
+  .bloco-img {
+    position: static;
+  }
+}
+
+.social {
+  background-color: #000000;
+  display: flex;
+  color: #fff;
 }
 
 

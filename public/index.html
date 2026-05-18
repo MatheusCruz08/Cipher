@@ -26,6 +26,9 @@
         <li>
           <a href="simulador.html">Simulador</a>
         </li>
+        <li>
+          <a href="quiz.html">Quiz</a>
+        </li>
         <li>|</li>
         <li>
           <a href="login.html">Login</a>
@@ -43,11 +46,10 @@
     </div>
   </div>
 
-  <div class="social">
-    <div class="containerdois">
-        <div class="conteudo">
-          <p>
-            O hip-hop (também conhecido como rap) é um gênero de música popular que surgiu no início da década de 1970, 
+  <div class="secao-conteudo">
+    <div class="container">
+      <article class="bloco-texto hidden-element">
+        <p> O hip-hop (também conhecido como rap) é um gênero de música popular que surgiu no início da década de 1970, 
             juntamente com uma subcultura associada criada pelas comunidades afro-americanas, afro-caribenhas e latinas na cidade de Nova York. 
             O estilo musical é uma síntese de uma ampla gama de técnicas, mas o rap é frequente o suficiente para se tornar uma característica definidora.
             Outros marcadores importantes do gênero são o disc jockey (DJ), o turntablismo, o scratching, o beatboxing e as faixas instrumentais.
@@ -73,18 +75,14 @@
             O final da década de 2000 e o início da década de 2010 testemunharam a ascensão da "era dos blogs" e do rap na internet, 
             com jovens artistas usando a internet para conquistar seguidores. Em meados e no final da década de 2010, o trap e o rap do SoundCloud explodiram em popularidade, 
             o que levou ao sucesso comercial de diversos artistas. 
-            Em 2017, o hip-hop tornou-se o gênero musical mais vendido nos Estados Unidos e também desenvolveu suas próprias variações regionais ao redor do mundo.
-          </p>
-        </div>
-
-        <div class="imgConteudo">
-          <img src="https://cdn.cosmos.so/ee8eb1c7-3c58-4f6b-855d-0490db55df87?format=jpeg" >
-        </div>
-
-        
-
-    </div>
+            Em 2017, o hip-hop tornou-se o gênero musical mais vendido nos Estados Unidos e também desenvolveu suas próprias variações regionais ao redor do mundo.</p>
+      </article>
+    <figure class="bloco-img">
+      <img src="https://cdn.cosmos.so/ee8eb1c7-3c58-4f6b-855d-0490db55df87?format=jpeg" alt="Descrição">
+    </figure>
   </div>
+</div>
+
 
   <div class="footer">
     <div class="container">
@@ -95,3 +93,25 @@
 </body>
 
 </html>
+
+<script>
+
+  // Cria o observador
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // Se o elemento está visível na tela
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show-element');
+      // Para de observar o elemento após animar (opcional)
+      // observer.unobserve(entry.target); 
+    }
+  });
+});
+
+// Seleciona todos os itens que você quer que apareçam aos poucos
+const hiddenElements = document.querySelectorAll('.hidden-element');
+
+// Aplica o observador em cada um dos itens
+hiddenElements.forEach((el) => observer.observe(el));
+
+</script>
