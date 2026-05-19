@@ -26,4 +26,6 @@ CONSTRAINT perguntaFk FOREIGN KEY (fkPergunta)
 );
 
 
+
+
 select * from usuario;

@@ -138,7 +138,7 @@ body {
 
 .bloco-img {
   flex: 1; /* A imagem ocupa 1 parte */
-  position: static; /* Efeito moderno: imagem acompanha o scroll */
+  position: sticky; /* Efeito moderno: imagem acompanha o scroll */
   top: 100px;
 }
 
@@ -167,7 +167,7 @@ body {
 .social {
   background-color: #000000;
   display: flex;
-  color: #fff;
+  color: #ffffff;
 }
 
 
