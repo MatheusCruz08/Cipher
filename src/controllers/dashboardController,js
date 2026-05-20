@@ -1,0 +1,23 @@
+var medidasModel = require("../models/medidasModel"); // ou o model que você criou acima
+
+function buscarTotalRespostas(req, res) {
+    console.log(`Recuperando os dados de respostas do quiz para o gráfico`);
+
+    medidasModel.buscarTotalRespostas()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as medidas: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+module.exports = {
+    buscarTotalRespostas
+};

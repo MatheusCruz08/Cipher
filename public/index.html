@@ -26,9 +26,6 @@
         <li>
           <a href="simulador.html">Simulador</a>
         </li>
-        <li>
-          <a href="quiz.html">Quiz</a>
-        </li>
         <li>|</li>
         <li>
           <a href="login.html">Login</a>
@@ -80,9 +77,11 @@
     <figure class="bloco-img hidden-element">
       <img src="https://cdn.cosmos.so/ee8eb1c7-3c58-4f6b-855d-0490db55df87?format=jpeg" alt="Descrição">
     </figure>
+
   </div>
 </div>
 
+    <div class="container"><button class="btn-enviar">FAÇA O QUIZ AGORA E TESTE OS SEUS CONHECIMENTOS!!!</button></div> <br><br>
 
   <div class="footer">
     <div class="container">
@@ -96,22 +95,16 @@
 
 <script>
 
-  // Cria o observador
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    // Se o elemento está visível na tela
     if (entry.isIntersecting) {
       entry.target.classList.add('show-element');
-      // Para de observar o elemento após animar (opcional)
-      // observer.unobserve(entry.target); 
     }
   });
 });
 
-// Seleciona todos os itens que você quer que apareçam aos poucos
 const hiddenElements = document.querySelectorAll('.hidden-element');
 
-// Aplica o observador em cada um dos itens
 hiddenElements.forEach((el) => observer.observe(el));
 
 </script>

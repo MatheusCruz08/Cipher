@@ -101,8 +101,22 @@ body {
 
 /* MISSÃO VISÃO VALORES */
 
+.btn-enviar {
+    background-color: #8d8484;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 100%;
+    transition: background 0.6s;
+}
 
-/* Estado inicial: escondido e levemente deslocado */
+.btn-enviar:hover {
+    background-color: #bd7c04;
+}
+
 .hidden-element {
   opacity: 0;
   transform: translateY(30px);
@@ -110,7 +124,6 @@ body {
   will-change: opacity, visibility;
 }
 
-/* Estado final: visível e na posição original */
 .show-element {
   opacity: 1;
   transform: translateY(0);
@@ -126,19 +139,19 @@ body {
 
 .secao-conteudo .container {
   display: flex;
-  gap: 40px; /* Espaçamento entre texto e imagem */
-  align-items: flex-start; /* Alinha no topo */
+  gap: 40px;
+  align-items: flex-start;
 }
 
 .bloco-texto {
-  flex: 2; /* O texto ocupa 2 partes do espaço */
+  flex: 2; 
   line-height: 1.6;
   font-size: 1.1rem;
 }
 
 .bloco-img {
-  flex: 1; /* A imagem ocupa 1 parte */
-  position: sticky; /* Efeito moderno: imagem acompanha o scroll */
+  flex: 1; 
+  position: static; 
   top: 100px;
 }
 
@@ -149,12 +162,10 @@ body {
   transition: transform 0.5s ease;
 }
 
-/* Animação suave ao passar o mouse */
 .bloco-img img:hover {
   transform: scale(1.03);
 }
 
-/* Responsividade: Se a tela for pequena, a imagem vai para cima */
 @media (max-width: 768px) {
   .secao-conteudo .container {
     flex-direction: column;
@@ -423,7 +434,7 @@ input {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #ED145B;
+  background-color: #9c0303;
   width: 120px;
   align-self: center;
   margin-top: 5px;
