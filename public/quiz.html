@@ -160,51 +160,83 @@
     </div>
 
     <script>
-        const gabarito = ["1", "0", "2", "0", "2", "1", "1", "1", "0", "1", "2", "0"];
+        // As respostas corretas
+        var gabarito = ["1", "0", "2", "0", "2", "1", "1", "1", "0", "1", "2", "0"];
 
         function verificarResultado() {
-            let acertos = 0;
-            const form = document.getElementById('quizForm');
+            // Pega o ID do usuário do navegador
+            var idUsuario = sessionStorage.ID_USUARIO;
 
-            const idUsuario = sessionStorage.ID_USUARIO;
-
-            if (!idUsuario) {
-                alert("Você precisa estar logado para salvar seu desempenho!");
-                window.location.href = "login.html";
+            // Verifica se o usuário está logado
+            if (idUsuario == undefined || idUsuario == "") {
+                alert("Você precisa estar logado!");
                 return;
             }
 
+            // Conta os acertos
+            var acertos = 0;
+            var perguntasRespondidas = [];
 
-            const divResultado = document.getElementById('resultado');
+            for (var i = 1; i <= 12; i++) {
+                var resposta = document.querySelector("input[name='p" + i + "']:checked");
+
+                if (resposta != null) {
+                    var acertou = resposta.value == gabarito[i - 1];
+                    if (acertou) acertos++;
+
+                    perguntasRespondidas.push({
+                        id: i,
+                        acertou: acertou
+                    });
+                }
+            }
+
+            // Mostra o resultado na tela
+            var divResultado = document.getElementById("resultado");
             divResultado.style.display = "block";
-            divResultado.style.backgroundColor = acertos >= 6 ? "#27ae60" : "#c0392b";
-            divResultado.innerHTML = `Você acertou ${acertos} de 12 perguntas! Salvando no banco...`;
-            divResultado.scrollIntoView({ behavior: 'smooth' });
 
-            div_aparecer.style.display = "block";
+            if (acertos >= 6) {
+                divResultado.style.backgroundColor = "#27ae60";
+            } else {
+                divResultado.style.backgroundColor = "#c0392b";
+            }
+
+            divResultado.innerHTML = "Você acertou " + acertos + " de 12 perguntas!";
+
+            // Mostra o botão de voltar
+            document.getElementById("div_aparecer").style.display = "block";
+
+            // Envia os dados para o servidor
+            var dados = {
+                idUsuarioServer: idUsuario,
+                perguntasServer: perguntasRespondidas
+            };
+
+            // Transforma em JSON (texto)
+            var dadosJson = JSON.stringify(dados);
+
+            console.log("ID Usuario:", idUsuario);
+            console.log("Perguntas:", perguntasRespondidas);
+
+            // Envia para o backend
             fetch("/quiz/salvar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-                    idUsuarioServer: idUsuario,
-                    perguntasServer: perguntasRespondidas
+                body: dadosJson
+            })
+                .then(function (resposta) {
+                    console.log("Dados salvos no banco!");
+                    divResultado.innerHTML += "<br><span style='font-size:14px;'>✓ Salvo com sucesso!</span>";
                 })
-            }).then(function (resposta) {
-                if (resposta.ok) {
-                    console.log("Respostas cadastradas com sucesso no banco de dados!");
-                    divResultado.innerHTML += "<br><span style='font-size:14px;'>✓ Pontuação registrada com sucesso!</span>";
-                } else {
-                    console.error("Erro ao tentar salvar as respostas.");
-                }
-            }).catch(function (erro) {
-                console.log("Houve um erro no fetch: ", erro);
-            });
+                .catch(function (erro) {
+                    console.log("Erro ao salvar: " + erro);
+                    divResultado.innerHTML += "<br><span style='font-size:14px;'>Erro ao salvar!</span>";
+                });
         }
-
-
     </script>
+
 </body>
 
 </html>

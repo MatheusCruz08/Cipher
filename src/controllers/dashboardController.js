@@ -1,9 +1,9 @@
-var medidasModel = require("../models/medidasModel"); // ou o model que você criou acima
+var dashboardModel = require("../models/dashboardModel");
 
 function buscarTotalRespostas(req, res) {
     console.log(`Recuperando os dados de respostas do quiz para o gráfico`);
 
-    medidasModel.buscarTotalRespostas()
+    dashboardModel.buscarTotalRespostas()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);

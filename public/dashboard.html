@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hip-Hop | Dashboards</title>
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -37,17 +37,29 @@
         </div>
 
         <div class="dash">
-            <div id="graficos">
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Engajamento por Pergunta do Quiz
-                    </h3>
-                    <div class="graph" style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoBarrasQuiz"></canvas>
-                    </div>
-                </div>
+    <div id="graficos">
+
+        <div class="display-block">
+            <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
+                Engajamento por Pergunta do Quiz
+            </h3>
+            <div class="graph" style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
+                <canvas id="graficoBarrasQuiz"></canvas>
             </div>
         </div>
+
+        <div class="display-block">
+            <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
+                Acertos e Erros por Pergunta
+            </h3>
+            <div class="graph" style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
+                <canvas id="graficoAcertos"></canvas>
+            </div>
+        </div>
+
+    </div>
+</div>
+    </div>
     </div>
 
 </body>
@@ -55,92 +67,84 @@
 </html>
 
 <script>
-    // Alimenta o nome do usuário logado na tela utilizando a sessão da SPTech
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    // Executa a função assim que a página carregar por completo
-    window.onload = obterDadosQuiz();
+    window.onload = obterDadosQuiz;
 
     function obterDadosQuiz() {
-        // Faz a requisição para a rota que criamos no back-end
-        fetch("/medidas/total-respostas", { cache: 'no-store' })
+        fetch("/dashboard/total-respostas", { cache: 'no-store' })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
-                        console.log(`Dados recebidos do banco: ${JSON.stringify(resposta)}`);
-                        
-                        // Passa os dados recebidos para a função que monta o gráfico
-                        plotarGrafico(resposta);
+                        plotarGraficoRespostas(resposta);
+                        plotarGraficoAcertos(resposta);
                     });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
                 }
-            })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
             });
     }
 
-    function plotarGrafico(resposta) {
-        console.log('Iniciando plotagem do gráfico...');
+    function plotarGraficoRespostas(resposta) {
+        var labels = resposta.map(function (r, i) { return "Perg. " + (i + 1); });
+        var votos = resposta.map(function (r) { return r.total_votos; });
 
-        // Estruturas vazias para separar o que é texto (eixo X) e o que é número (eixo Y)
-        let labelsPerguntas = [];
-        let dadosVotos = [];
-
-        // Preenche os vetores com os dados vindos do banco de dados
-        for (let i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            // Simplifica o texto exibido no eixo X para não quebrar o layout (ex: "P1", "P2"...)
-            labelsPerguntas.push(`Perg. ${i + 1}`); 
-            dadosVotos.push(registro.total_votos);
-        }
-
-        // Configuração dos dados do Chart.js
-        const dadosGrafico = {
-            labels: labelsPerguntas,
-            datasets: [{
-                label: 'Total de Respostas',
-                data: dadosVotos,
-                backgroundColor: 'rgba(156, 3, 3, 0.6)', // Vermelho correspondente ao seu #9c0303 com opacidade
-                borderColor: '#9c0303',
-                borderWidth: 2,
-                borderRadius: 5
-            }]
-        };
-
-        // Configurações visuais gerais do gráfico
-        const config = {
-            type: 'bar', // Gráfico de Barras verticais
-            data: dadosGrafico,
+        new Chart(document.getElementById('graficoBarrasQuiz'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total de Respostas',
+                    data: votos,
+                    backgroundColor: 'rgba(156, 3, 3, 0.6)',
+                    borderColor: '#9c0303',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: '#fff' // Cor dos números do eixo Y
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: '#fff' // Cor dos nomes do eixo X
-                        }
-                    }
+                    y: { beginAtZero: true, ticks: { color: '#fff' } },
+                    x: { ticks: { color: '#fff' } }
                 },
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#fff' // Cor da legenda interna
-                        }
-                    }
-                }
+                plugins: { legend: { labels: { color: '#fff' } } }
             }
-        };
+        });
+    }
 
-        // Instancia o gráfico apontando para o id do canvas
-        let meuGrafico = new Chart(
-            document.getElementById('graficoBarrasQuiz'),
-            config
-        );
+    function plotarGraficoAcertos(resposta) {
+        var labels = resposta.map(function (r, i) { return "Perg. " + (i + 1); });
+        var acertos = resposta.map(function (r) { return r.total_acertos; });
+        var erros = resposta.map(function (r) { return r.total_votos - r.total_acertos; });
+
+        new Chart(document.getElementById('graficoAcertos'), {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Acertos',
+                        data: acertos,
+                        backgroundColor: 'rgba(39, 174, 96, 0.7)',
+                        borderColor: '#27ae60',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    },
+                    {
+                        label: 'Erros',
+                        data: erros,
+                        backgroundColor: 'rgba(192, 57, 43, 0.7)',
+                        borderColor: '#c0392b',
+                        borderWidth: 2,
+                        borderRadius: 5
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#fff' } },
+                    x: { ticks: { color: '#fff' } },
+                    x: { stacked: false, ticks: { color: '#fff' } }
+                },
+                plugins: { legend: { labels: { color: '#fff' } } }
+            }
+        });
     }
 </script>
