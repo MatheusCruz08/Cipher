@@ -40,3 +40,12 @@ INSERT INTO pergunta (descricao) VALUES
 select * from resposta;
 
 ALTER TABLE resposta ADD COLUMN acertou BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE pergunta ADD COLUMN artista VARCHAR(60);
+
+UPDATE pergunta SET artista = 'Kendrick Lamar' WHERE idPergunta IN (1, 6);
+UPDATE pergunta SET artista = 'Kanye West'     WHERE idPergunta IN (2, 7);
+UPDATE pergunta SET artista = 'Mac Miller'     WHERE idPergunta IN (3, 8);
+UPDATE pergunta SET artista = 'SZA'            WHERE idPergunta IN (4, 9);
+UPDATE pergunta SET artista = 'Travis Scott'   WHERE idPergunta IN (5, 10);
+UPDATE pergunta SET artista = 'Tyler, the Creator' WHERE idPergunta IN (11, 12);
