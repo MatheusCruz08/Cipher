@@ -16,11 +16,10 @@
         <div class="container">
             <h1 class="titulo">Hip-Hop</h1>
             <ul class="navbar">
-                <li><a href="index.html">Inicial</a></li>
-                <li><a href="simulador.html">Simulador</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
                 <li>|</li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="cadastro.html">Sair</a></li>
             </ul>
         </div>
     </div>
@@ -142,11 +141,16 @@
                 <button type="button" class="btn-enviar" onclick="verificarResultado()">Finalizar Quiz</button> <br><br>
 
                 <div id="div_aparecer" style="display: none;">
-                    <button type="button" class="btn-enviar" onclick="window.location.href='site.html'">
+                    <button type="button" class="btn-enviar" onclick="window.location.href='./site.html'">
                         Voltar para o site
+                    </button>
+                    <br><br>
+                    <button type="button" class="btn-enviar" onclick="window.location.href='./dashboard.html'">
+                        Compare seus resultados com os outros usuarios
                     </button>
                 </div>
 
+                
             </form>
 
             <div id="resultado"></div>
@@ -160,20 +164,18 @@
     </div>
 
     <script>
-        // As respostas corretas
+
         var gabarito = ["1", "0", "2", "0", "2", "1", "1", "1", "0", "1", "2", "0"];
 
         function verificarResultado() {
-            // Pega o ID do usuário do navegador
+
             var idUsuario = sessionStorage.ID_USUARIO;
 
-            // Verifica se o usuário está logado
             if (idUsuario == undefined || idUsuario == "") {
                 alert("Você precisa estar logado!");
                 return;
             }
 
-            // Conta os acertos
             var acertos = 0;
             var perguntasRespondidas = [];
 
@@ -191,7 +193,6 @@
                 }
             }
 
-            // Mostra o resultado na tela
             var divResultado = document.getElementById("resultado");
             divResultado.style.display = "block";
 
@@ -203,22 +204,18 @@
 
             divResultado.innerHTML = "Você acertou " + acertos + " de 12 perguntas!";
 
-            // Mostra o botão de voltar
             document.getElementById("div_aparecer").style.display = "block";
 
-            // Envia os dados para o servidor
             var dados = {
                 idUsuarioServer: idUsuario,
                 perguntasServer: perguntasRespondidas
             };
 
-            // Transforma em JSON (texto)
             var dadosJson = JSON.stringify(dados);
 
             console.log("ID Usuario:", idUsuario);
             console.log("Perguntas:", perguntasRespondidas);
 
-            // Envia para o backend
             fetch("/quiz/salvar", {
                 method: "POST",
                 headers: {
