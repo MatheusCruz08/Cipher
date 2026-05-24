@@ -284,6 +284,11 @@ body {
   height: auto;
 }
 
+.container .btn-enviar a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 /* FOOTER */
 
 .footer {

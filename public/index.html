@@ -81,8 +81,8 @@
   </div>
 </div>
 
-    <div class="container"><button class="btn-enviar">FAÇA O QUIZ AGORA E TESTE OS SEUS CONHECIMENTOS!!!</button></div> <br><br>
-
+    <div class="container "> <button class="btn-enviar" onclick="quiz()" href="quiz.html"> TESTE SEUS CONHECIMENTOS COM O QUIZ!!! </button> </div>
+    
   <div class="footer">
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
@@ -107,4 +107,15 @@ const hiddenElements = document.querySelectorAll('.hidden-element');
 
 hiddenElements.forEach((el) => observer.observe(el));
 
+function quiz() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+            if (idUsuario == undefined || idUsuario == "") {
+                alert("Você precisa estar logado!");
+                return;
+                window.location = "./cadastro.html"
+            } else {
+                window.location = "./quiz.html"
+            }
+    }
 </script>

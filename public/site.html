@@ -18,7 +18,7 @@
 <body>
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <h1 class="titulo">Hip-Hop</h1>
             <ul class="navbarSite">
                 <li>
                     <a href="dashboard.html">Dashboard</a>
@@ -111,7 +111,7 @@
                         Em 2012, Scott assinou seu primeiro grande contrato com a gravadora Epic Records.</p>
                 </div>
 
-                            <div class="container"> <button class="btn-enviar" href="quiz.html"> TESTE SEUS CONHECIMENTOS COM O QUIZ!!! </button> </div>
+                            <div class="container "> <button class="btn-enviar" onclick="quiz()" href="quiz.html"> TESTE SEUS CONHECIMENTOS COM O QUIZ!!! </button> </div>
 
 
             </div>
@@ -129,3 +129,20 @@
 
 </html>
 
+<script>
+
+    function quiz() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+            if (idUsuario == undefined || idUsuario == "") {
+                alert("Você precisa estar logado!");
+                return;
+                window.location = "./cadastro.html"
+            } else {
+                window.location = "./quiz.html"
+            }
+    }
+
+    
+
+</script>

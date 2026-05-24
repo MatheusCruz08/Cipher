@@ -31,65 +31,57 @@
                 <h3>Gráficos do Quiz</h3>
             </div>
 
+            <div class="btn-nav">
+                <h3> <a href="site.html">Volte e conheça os artistas</a></h3>
+            </div>
+
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
-                
+
             </div>
         </div>
 
         <div class="dash">
             <div id="graficos">
 
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Engajamento por Pergunta do Quiz
-                    </h3>
-                    <div class="graph"
-                        style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoBarrasQuiz"></canvas>
+                <div class="dash">
+                    <div id="graficos">
+
+                        <div id="kpis"
+                            style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 20px;">
+                            <div class="kpi-card">
+                                <span class="kpi-icon">📊</span>
+                                <span class="kpi-label">Total de Respostas</span>
+                                <span class="kpi-valor" id="kpi-total"></span>
+                            </div>
+                            <div class="kpi-card">
+                                <span class="kpi-icon">🏆</span>
+                                <span class="kpi-label">Artista Mais Acertado</span>
+                                <span class="kpi-valor" id="kpi-artista"></span>
+                            </div>
+                        </div>
+
+                        <div class="display-block">
+                            <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
+                                Ranking de Usuários
+                            </h3>
+                            <div class="graph"
+                                style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
+                                <canvas id="graficoRanking"></canvas>
+                            </div>
+                        </div>
+                        <div class="display-block">
+                            <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
+                                Acertos e Erros por Pergunta
+                            </h3>
+                            <div class="graph"
+                                style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
+                                <canvas id="graficoAcertos"></canvas>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Acertos e Erros por Pergunta
-                    </h3>
-                    <div class="graph"
-                        style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoAcertos"></canvas>
-                    </div>
-                </div>
-
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Ranking de Usuários
-                    </h3>
-                    <div class="graph"
-                        style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoRanking"></canvas>
-                    </div>
-                </div>
-
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Taxa de Acerto por Pergunta (%)
-                    </h3>
-                    <div class="graph"
-                        style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoTaxa"></canvas>
-                    </div>
-                </div>
-
-                <div class="display-block">
-                    <h3 class="tituloGraficos" style="color: white; text-align: center; margin-top: 20px;">
-                        Desempenho por Artista
-                    </h3>
-                    <div class="graph"
-                        style="width: 80%; margin: auto; background-color: #111; padding: 20px; border-radius: 10px;">
-                        <canvas id="graficoArtista"></canvas>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -106,90 +98,7 @@
     function obterDadosQuiz() {
         fetch("/dashboard/total-respostas", { cache: 'no-store' })
             .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        plotarGraficoRespostas(resposta);
-                        plotarGraficoAcertos(resposta);
-                    });
-                }
-            });
-    }
-
-    function plotarGraficoRespostas(resposta) {
-        var labels = resposta.map(function (r, i) { return "Perg. " + (i + 1); });
-        var votos = resposta.map(function (r) { return r.total_votos; });
-
-        new Chart(document.getElementById('graficoBarrasQuiz'), {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Total de Respostas',
-                    data: votos,
-                    backgroundColor: 'rgba(156, 3, 3, 0.6)',
-                    borderColor: '#9c0303',
-                    borderWidth: 2,
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                scales: {
-                    y: { beginAtZero: true, ticks: { color: '#fff' } },
-                    x: { ticks: { color: '#fff' } }
-                },
-                plugins: { legend: { labels: { color: '#fff' } } }
-            }
-        });
-    }
-
-    function plotarGraficoAcertos(resposta) {
-        var labels = resposta.map(function (r, i) { return "Perg. " + (i + 1); });
-        var acertos = resposta.map(function (r) { return r.total_acertos; });
-        var erros = resposta.map(function (r) { return r.total_votos - r.total_acertos; });
-
-        new Chart(document.getElementById('graficoAcertos'), {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Acertos',
-                        data: acertos,
-                        backgroundColor: 'rgba(39, 174, 96, 0.7)',
-                        borderColor: '#27ae60',
-                        borderWidth: 2,
-                        borderRadius: 5
-                    },
-                    {
-                        label: 'Erros',
-                        data: erros,
-                        backgroundColor: 'rgba(192, 57, 43, 0.7)',
-                        borderColor: '#c0392b',
-                        borderWidth: 2,
-                        borderRadius: 5
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    y: { beginAtZero: true, ticks: { color: '#fff' } },
-                    x: { ticks: { color: '#fff' } },
-                    x: { stacked: false, ticks: { color: '#fff' } }
-                },
-                plugins: { legend: { labels: { color: '#fff' } } }
-            }
-        });
-    }
-
-    function obterDadosQuiz() {
-        fetch("/dashboard/total-respostas", { cache: 'no-store' })
-            .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        plotarGraficoRespostas(resposta);
-                        plotarGraficoAcertos(resposta);
-                    });
-                }
+                if (response.ok) response.json().then(preencherKPITotal);
             });
 
         fetch("/dashboard/ranking-usuarios", { cache: 'no-store' })
@@ -197,15 +106,31 @@
                 if (response.ok) response.json().then(plotarGraficoRanking);
             });
 
-        fetch("/dashboard/taxa-acerto", { cache: 'no-store' })
-            .then(function (response) {
-                if (response.ok) response.json().then(plotarGraficoTaxa);
-            });
-
         fetch("/dashboard/acertos-por-artista", { cache: 'no-store' })
             .then(function (response) {
-                if (response.ok) response.json().then(plotarGraficoArtista);
+                if (response.ok) response.json().then(preencherKPIArtista);
             });
+        fetch("/dashboard/total-respostas", { cache: 'no-store' })
+            .then(function (response) {
+                if (response.ok) response.json().then(function (resposta) {
+                    preencherKPITotal(resposta);
+                    plotarGraficoAcertos(resposta); // <-- adiciona aqui
+                });
+            });
+    }
+
+    function preencherKPITotal(resposta) {
+        var total = resposta.reduce(function (soma, r) { return soma + r.total_votos; }, 0);
+        document.getElementById('kpi-total').innerHTML = total;
+    }
+
+    function preencherKPIArtista(resposta) {
+        if (resposta.length == 0) return;
+        var melhor = resposta.reduce(function (max, r) {
+            var taxa = r.total_acertos / (r.total_acertos + r.total_erros);
+            return taxa > max.taxa ? { taxa: taxa, artista: r.artista } : max;
+        }, { taxa: -1, artista: '' });
+        document.getElementById('kpi-artista').innerHTML = melhor.artista + "<br><small style='color:#f1c40f'>" + Math.round(melhor.taxa * 100) + "% de acerto</small>";
     }
 
     function plotarGraficoRanking(resposta) {
@@ -226,7 +151,7 @@
                 }]
             },
             options: {
-                indexAxis: 'y', // barras horizontais
+                indexAxis: 'y',
                 scales: {
                     y: { ticks: { color: '#fff' } },
                     x: { beginAtZero: true, ticks: { color: '#fff' } }
@@ -236,41 +161,12 @@
         });
     }
 
-    function plotarGraficoTaxa(resposta) {
+    function plotarGraficoAcertos(resposta) {
         var labels = resposta.map(function (r, i) { return "Perg. " + (i + 1); });
-        var taxas = resposta.map(function (r) { return r.taxa_acerto; });
-
-        new Chart(document.getElementById('graficoTaxa'), {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Taxa de Acerto (%)',
-                    data: taxas,
-                    backgroundColor: 'rgba(241, 196, 15, 0.2)',
-                    borderColor: '#f1c40f',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#f1c40f',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                scales: {
-                    y: { beginAtZero: true, max: 100, ticks: { color: '#fff', callback: function (v) { return v + '%'; } } },
-                    x: { ticks: { color: '#fff' } }
-                },
-                plugins: { legend: { labels: { color: '#fff' } } }
-            }
-        });
-    }
-
-    function plotarGraficoArtista(resposta) {
-        var labels = resposta.map(function (r) { return r.artista; });
         var acertos = resposta.map(function (r) { return r.total_acertos; });
-        var erros = resposta.map(function (r) { return r.total_erros; });
+        var erros = resposta.map(function (r) { return r.total_votos - r.total_acertos; });
 
-        new Chart(document.getElementById('graficoArtista'), {
+        new Chart(document.getElementById('graficoAcertos'), {
             type: 'bar',
             data: {
                 labels: labels,
