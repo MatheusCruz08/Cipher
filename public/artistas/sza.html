@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hip-Hop | SZA</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/icon/favicon2.ico">
+    <script src="../js/sessao.js"></script>
+    <style>
+        .artista-hero { background: linear-gradient(135deg, #2d1b4e 0%, #4a2060 50%, #6b3fa0 100%); padding: 60px 0; color: white; }
+        .artista-container { max-width: 1100px; margin: 0 auto; padding: 0 30px; display: flex; gap: 50px; align-items: flex-start; }
+        .artista-foto { width: 300px; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .artista-foto img { width: 100%; height: 380px; object-fit: cover; object-position: top; }
+        .artista-info h1 { font-size: 2.8rem; margin: 0 0 8px; color: #d4a8ff; }
+        .artista-info .subtitulo-art { color: #bbb; font-size: 0.9rem; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .artista-info p { line-height: 1.9; color: #ccc; margin-bottom: 18px; font-size: 0.97rem; }
+        .destaque { background: rgba(212,168,255,0.12); border-left: 4px solid #d4a8ff; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; color: #eee; font-style: italic; }
+        .voltar-btn { display: inline-block; margin: 40px auto; padding: 14px 32px; background: #d4a8ff; color: #2d1b4e; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .voltar-btn:hover { background: #b880ff; }
+        .centro { text-align: center; padding: 30px; }
+        @media(max-width:700px){ .artista-container{flex-direction:column;} .artista-foto{width:100%;min-width:unset;} }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Hip-Hop</h1>
+            <ul class="navbarSite">
+                <li><a href="../dashboard.html">Dashboard</a></li>
+                <li><a href="../quiz.html">Quiz</a></li>
+                <li>|</li>
+                <li onclick="limparSessao()">Sair</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="artista-hero">
+        <div class="artista-container">
+            <div class="artista-foto">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/SZA_in_2018.jpg/800px-SZA_in_2018.jpg" alt="SZA" onerror="this.src='https://via.placeholder.com/300x380/2d1b4e/d4a8ff?text=SZA'">
+            </div>
+            <div class="artista-info">
+                <p class="subtitulo-art">Cantora · Compositora · Maplewood, Nova Jersey</p>
+                <h1>SZA</h1>
+
+                <p><strong>Solána Imani Rowe</strong> — esse é o nome completo por trás do enigmático pseudônimo SZA. Nascida em Maplewood, Nova Jersey, ela cresceu em uma família muçulmana e desenvolveu desde cedo uma relação íntima com a música como forma de expressão emocional. Sua voz única e suas letras cruas a distinguiram desde os primeiros projetos independentes.</p>
+
+                <div class="destaque">
+                    "SZA transformou a dor e a confusão em arte — suas canções soam como páginas de um diário que todos gostaríamos de ter escrito."
+                </div>
+
+                <p>Em <strong>2017</strong>, SZA lançou seu álbum de estreia pela gravadora TDE (Top Dawg Entertainment): <strong>Ctrl</strong>. O disco foi aclamado pela crítica como um dos melhores da década, por sua abordagem honesta sobre relacionamentos, insegurança e autodescoberta. Faixas como Drew Barrymore, The Weekend e Garden (Say It Like Dat) se tornaram hinos de uma geração inteira.</p>
+
+                <p>O impacto de Ctrl foi tão profundo que consolidou SZA como uma voz central do R&B alternativo contemporâneo. Ela é amplamente creditada por popularizar um estilo mais íntimo e despojado dentro do gênero, influenciando dezenas de artistas que vieram depois.</p>
+
+                <p>Com múltiplas indicações ao Grammy e colaborações com artistas como Kendrick Lamar, Drake e Doja Cat, SZA continua sendo uma das vozes mais originais e necessárias da música atual.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="centro">
+        <a href="../site.html" class="voltar-btn">← Voltar para Artistas</a>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por Matheus &hearts;  &copy; 2026</h4>
+        </div>
+    </div>
+</body>
+</html>

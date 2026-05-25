@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hip-Hop | Tyler, the Creator</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/icon/favicon2.ico">
+    <script src="../js/sessao.js"></script>
+    <style>
+        .artista-hero { background: linear-gradient(135deg, #003300 0%, #004d00 50%, #006600 100%); padding: 60px 0; color: white; }
+        .artista-container { max-width: 1100px; margin: 0 auto; padding: 0 30px; display: flex; gap: 50px; align-items: flex-start; }
+        .artista-foto { width: 300px; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .artista-foto img { width: 100%; height: 380px; object-fit: cover; object-position: top; }
+        .artista-info h1 { font-size: 2.8rem; margin: 0 0 8px; color: #7fff00; }
+        .artista-info .subtitulo-art { color: #bbb; font-size: 0.9rem; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .artista-info p { line-height: 1.9; color: #ccc; margin-bottom: 18px; font-size: 0.97rem; }
+        .destaque { background: rgba(127,255,0,0.1); border-left: 4px solid #7fff00; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; color: #eee; font-style: italic; }
+        .voltar-btn { display: inline-block; margin: 40px auto; padding: 14px 32px; background: #7fff00; color: #003300; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .voltar-btn:hover { background: #60d400; }
+        .centro { text-align: center; padding: 30px; }
+        @media(max-width:700px){ .artista-container{flex-direction:column;} .artista-foto{width:100%;min-width:unset;} }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Hip-Hop</h1>
+            <ul class="navbarSite">
+                <li><a href="../dashboard.html">Dashboard</a></li>
+                <li><a href="../quiz.html">Quiz</a></li>
+                <li>|</li>
+                <li onclick="limparSessao()">Sair</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="artista-hero">
+        <div class="artista-container">
+            <div class="artista-foto">
+                <img src="https://cdn.jornaldebrasilia.com.br/wp-content/uploads/2026/03/23082744/AFP__20260302__99HT7NA__v1__MidRes__32ndAnnualActorsAwardsFormerlySagAwardsArrivals-620x620.jpg" alt="Tyler, the Creator" onerror="this.src='https://via.placeholder.com/300x380/003300/7fff00?text=Tyler+the+Creator'">
+            </div>
+            <div class="artista-info">
+                <p class="subtitulo-art">Rapper · Produtor · Estilista · Los Angeles, Califórnia</p>
+                <h1>Tyler, the Creator</h1>
+
+                <p>Tyler Gregory Okonma — mais conhecido como <strong>Tyler, the Creator</strong> — é uma das mentes mais criativas e multifacetadas do hip-hop contemporâneo. Crescendo em Los Angeles, Tyler não apenas aprendeu a fazer música: ele construiu um universo completo, com estética, moda, linguagem e filosofia próprias.</p>
+
+                <div class="destaque">
+                    "Tyler, the Creator provou que o hip-hop pode ser tão experimental, tão cheio de cor e contradição quanto qualquer obra de arte contemporânea."
+                </div>
+
+                <p>Antes mesmo de gravar sozinho, Tyler foi o líder e cofundador do coletivo <strong>Odd Future (OFWGKTA)</strong> — um grupo de jovens artistas de Los Angeles que sacudiu a indústria musical no início dos anos 2010 com sua estética provocadora, lançamentos gratuitos e energia caótica. O coletivo lançou diversas carreiras que hoje são referências no rap.</p>
+
+                <p>Sua evolução artística é um dos arcos mais fascinantes do rap moderno. Do debut provocador <em>Goblin</em> ao lírico <em>Flower Boy</em>, passando pelo revolucionário <strong>IGOR</strong> — álbum que venceu o <strong>Grammy de Melhor Álbum de Rap em 2020</strong> —, Tyler demonstrou a cada projeto que os rótulos são insuficientes para conter seu talento.</p>
+
+                <p>Além da música, Tyler é também estilista, diretor criativo e criador do festival Camp Flog Gnaw. Ele representa uma geração de artistas que recusam ser apenas rappers — são criadores totais, donos de sua própria narrativa e visão de mundo.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="centro">
+        <a href="../site.html" class="voltar-btn">← Voltar para Artistas</a>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por Matheus &hearts;  &copy; 2026</h4>
+        </div>
+    </div>
+</body>
+</html>

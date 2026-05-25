@@ -1,12 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hip-Hop | Kanye West</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/icon/favicon2.ico">
+    <script src="../js/sessao.js"></script>
+    <style>
+        .artista-hero { background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d2d2d 100%); padding: 60px 0; color: white; }
+        .artista-container { max-width: 1100px; margin: 0 auto; padding: 0 30px; display: flex; gap: 50px; align-items: flex-start; }
+        .artista-foto { width: 300px; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+        .artista-foto img { width: 100%; height: 380px; object-fit: cover; object-position: top; }
+        .artista-info h1 { font-size: 2.8rem; margin: 0 0 8px; color: #f0c040; }
+        .artista-info .subtitulo-art { color: #aaa; font-size: 0.9rem; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .artista-info p { line-height: 1.9; color: #ccc; margin-bottom: 18px; font-size: 0.97rem; }
+        .destaque { background: rgba(240,192,64,0.12); border-left: 4px solid #f0c040; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; color: #eee; font-style: italic; }
+        .voltar-btn { display: inline-block; margin: 40px auto; padding: 14px 32px; background: #f0c040; color: #111; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .voltar-btn:hover { background: #d4a800; }
+        .centro { text-align: center; padding: 30px; }
+        @media(max-width:700px){ .artista-container{flex-direction:column;} .artista-foto{width:100%;min-width:unset;} }
+    </style>
 </head>
 <body>
-    <header></header>
-    
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Hip-Hop</h1>
+            <ul class="navbarSite">
+                <li><a href="../dashboard.html">Dashboard</a></li>
+                <li><a href="../quiz.html">Quiz</a></li>
+                <li>|</li>
+                <li onclick="limparSessao()">Sair</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="artista-hero">
+        <div class="artista-container">
+            <div class="artista-foto">
+                <img src="https://static.wikia.nocookie.net/taylor-swift/images/3/38/Kanye-West.jpg/revision/latest?cb=20230804132847" alt="Kanye West" onerror="this.src='https://via.placeholder.com/300x380/111/f0c040?text=Kanye+West'">
+            </div>
+            <div class="artista-info">
+                <p class="subtitulo-art">Rapper · Produtor · Estilista · Chicago, Illinois</p>
+                <h1>Kanye West</h1>
+
+                <p>Kanye Omari West é uma figura singular na história da música contemporânea. Nascido em Atlanta e criado em Chicago, ele começou sua carreira como produtor antes de se aventurar como rapper — e logo ficou claro que o mundo estava diante de algo diferente. Seu álbum de estreia como artista solo, <strong>The College Dropout</strong>, lançado em 2004, é considerado um dos maiores debuts da história do hip-hop.</p>
+
+                <div class="destaque">
+                    "The College Dropout foi revolucionário porque Kanye trouxe vulnerabilidade e humor a um gênero que valorizava dureza acima de tudo."
+                </div>
+
+                <p>Ao longo dos anos, Kanye expandiu seus horizontes muito além da música. No mundo da moda, fundou a marca <strong>Yeezy</strong>, que se tornou uma das linhas de streetwear mais influentes e cobiçadas do mundo. A parceria inicial com a Adidas deu origem a tênis que se tornaram verdadeiros fenômenos culturais, vendidos aos milhões em todo o globo.</p>
+
+                <p>Sua discografia continua sendo debatida e estudada por críticos musicais ao redor do mundo. De Late Registration a My Beautiful Dark Twisted Fantasy, cada álbum foi uma declaração artística audaciosa — uma reinvenção constante que desafiou expectativas e redefiniu o que o rap poderia ser.</p>
+
+                <p>Polêmico, genial e inclassificável, Kanye West permanece uma das figuras mais debatidas e influentes da cultura pop global — alguém que nunca aceitou limites impostos por gênero, indústria ou convenção.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="centro">
+        <a href="../site.html" class="voltar-btn">← Voltar para Artistas</a>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por Matheus &hearts;  &copy; 2026</h4>
+    </div>
 </body>
 </html>

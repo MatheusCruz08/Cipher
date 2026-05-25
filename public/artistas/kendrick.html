@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hip-Hop | Kendrick Lamar</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/icon/favicon2.ico">
+    <script src="../js/sessao.js"></script>
+    <style>
+        .artista-hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 60px 0; color: white; }
+        .artista-container { max-width: 1100px; margin: 0 auto; padding: 0 30px; display: flex; gap: 50px; align-items: flex-start; }
+        .artista-foto { width: 300px; min-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .artista-foto img { width: 100%; height: 380px; object-fit: cover; object-position: top; }
+        .artista-info h1 { font-size: 2.8rem; margin: 0 0 8px; color: #e94560; }
+        .artista-info .subtitulo-art { color: #aaa; font-size: 0.9rem; margin-bottom: 28px; text-transform: uppercase; letter-spacing: 2px; }
+        .artista-info p { line-height: 1.9; color: #ccc; margin-bottom: 18px; font-size: 0.97rem; }
+        .destaque { background: rgba(233,69,96,0.15); border-left: 4px solid #e94560; padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; color: #eee; font-style: italic; }
+        .voltar-btn { display: inline-block; margin: 40px auto; padding: 14px 32px; background: #e94560; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; }
+        .voltar-btn:hover { background: #c73652; }
+        .centro { text-align: center; padding: 30px; }
+        @media(max-width:700px){ .artista-container{flex-direction:column;} .artista-foto{width:100%;min-width:unset;} }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">Hip-Hop</h1>
+            <ul class="navbarSite">
+                <li><a href="../dashboard.html">Dashboard</a></li>
+                <li><a href="../quiz.html">Quiz</a></li>
+                <li>|</li>
+                <li onclick="limparSessao()">Sair</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="artista-hero">
+        <div class="artista-container">
+            <div class="artista-foto">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Kendrick_Lamar_at_the_2019_GQ_Men_of_the_Year_Party.jpg/800px-Kendrick_Lamar_at_the_2019_GQ_Men_of_the_Year_Party.jpg" alt="Kendrick Lamar" onerror="this.src='https://via.placeholder.com/300x380/1a1a2e/e94560?text=Kendrick+Lamar'">
+            </div>
+            <div class="artista-info">
+                <p class="subtitulo-art">Rapper · Compton, Califórnia</p>
+                <h1>Kendrick Lamar</h1>
+
+                <p>Kendrick Lamar Duckworth nasceu em Compton, Califórnia, e cresceu em meio a uma das cenas musicais mais ricas dos Estados Unidos. Seu talento para contar histórias ficou evidente quando lançou seu segundo álbum solo pela major label, <strong>good kid, m.A.A.d city</strong>, no outono de <strong>2012</strong> — um marco absoluto na história do hip-hop.</p>
+
+                <div class="destaque">
+                    "GKMC capturou algo raro: a experiência de crescer em Compton com uma honestidade visceral que poucos artistas ousaram explorar."
+                </div>
+
+                <p>A carreira de Kendrick é repleta de conquistas históricas. Em <strong>2022</strong>, seu portfólio contava com impressionantes <strong>13 Grammy Awards</strong>, tornando-o um dos artistas mais premiados de sua geração. Cada estatueta representava não apenas talento, mas uma dedicação singular à arte do rap.</p>
+
+                <p>Em 2018, Kendrick alcançou um patamar que nenhum músico de hip-hop havia alcançado antes: venceu o <strong>Prêmio Pulitzer de Música</strong> pelo álbum DAMN., tornando-se o primeiro artista fora dos gêneros clássico e jazz a receber tal honraria — um marco histórico que consolidou seu legado para além das paradas musicais.</p>
+
+                <p>Sua influência vai muito além da música. Kendrick é um artista completo, comprometido com questões sociais, identidade negra e narrativa cultural — temas que permeiam cada verso que escreve e cada projeto que assina.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="centro">
+        <a href="../site.html" class="voltar-btn">← Voltar para Artistas</a>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por Matheus &hearts;  &copy; 2026</h4>
+        </div>
+    </div>
+</body>
+</html>
