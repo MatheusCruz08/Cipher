@@ -25,7 +25,16 @@ CREATE TABLE resposta (
     FOREIGN KEY (fkPergunta) REFERENCES pergunta(idPergunta)
 );
 
--- Inserir as 12 perguntas
+CREATE TABLE resultadoQuiz (
+    idResultado INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario   INT UNIQUE,
+    totalAcertos INT DEFAULT 0,
+    totalRespostas INT DEFAULT 0,
+    dtUltimoQuiz DATETIME,
+    CONSTRAINT fkResultadoUsuario FOREIGN KEY (fkUsuario)
+        REFERENCES usuario(idUsuario)
+);
+
 INSERT INTO pergunta (descricao) VALUES
 ('Em que ano Kendrick Lamar lançou seu álbum good kid, m.A.A.d city?','Kendrick Lamar'),
 ('Qual foi o primeiro álbum de estúdio de Kanye West?','Kanye West'),

@@ -14,11 +14,15 @@ function salvarRespostas(req, res) {
         return;
     }
 
+    var totalAcertos = perguntas.filter(function(p) { return p.acertou; }).length;
+    var totalRespostas = perguntas.length;
+
     quizModel.salvarRespostas(idUsuario, perguntas)
-        .then(function(resultado) {
-            res.status(200).json({
-                mensagem: "Respostas salvas com sucesso!"
-            });
+        .then(function() {
+            return quizModel.atualizarResultado(idUsuario, totalAcertos, totalRespostas);
+        })
+        .then(function() {
+            res.status(200).json({ mensagem: "Respostas salvas com sucesso!" });
         })
         .catch(function(erro) {
             console.log("Erro: " + erro);
@@ -32,3 +36,4 @@ function salvarRespostas(req, res) {
 module.exports = {
     salvarRespostas
 };
+

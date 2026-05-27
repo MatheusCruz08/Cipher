@@ -71,10 +71,6 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <div class="campo">
-            <span>Data de nascimento</span>
-            <input id="dtNascimento" type="text" placeholder="AAAA-MM-DD" maxlength="10">
-          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -112,7 +108,7 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var dtNascVar = dtNascimento.value
+    
     
 
     // Verificando se há algum campo em branco
@@ -120,8 +116,7 @@
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      dtNascVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -147,7 +142,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        dtNascServer: dtNascVar
+        
       }),
     })
       .then(function (resposta) {
