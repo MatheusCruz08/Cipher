@@ -36,6 +36,7 @@
 }
 
 .artista-info h1 {
+    text-align: justify;
     font-size: 45px;
     margin: 0 0 8px;
     color: var(--cor-destaque);
@@ -50,6 +51,7 @@
 }
 
 .artista-info p {
+    text-align: justify;
     line-height: 1.9;
     color: #ccc;
     margin-bottom: 18px;

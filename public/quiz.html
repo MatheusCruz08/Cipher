@@ -137,9 +137,9 @@
                     <label class="opcao"><input type="radio" name="p12" value="2"> Brockhampton</label>
                     <label class="opcao"><input type="radio" name="p12" value="3"> Pro Era</label>
                 </div>
-
+                <div id="div_esconder">
                 <button type="button" class="btn-enviar" onclick="verificarResultado()">Finalizar Quiz</button> <br><br>
-
+                    </div>
                 <div id="div_aparecer" style="display: none;">
                     <button type="button" class="btn-enviar" onclick="window.location.href='./site.html'">
                         Voltar para o site
@@ -195,6 +195,7 @@
 
             var divResultado = document.getElementById("resultado");
             divResultado.style.display = "block";
+            div_esconder.style.display = "none";
 
             if (acertos >= 6) {
                 divResultado.style.backgroundColor = "#27ae60";
