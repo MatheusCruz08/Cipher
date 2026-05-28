@@ -164,7 +164,7 @@ body {
 
 .bloco-img {
   flex: 1; 
-  position: static; 
+  position: sticky; 
   top: 100px;
 }
 

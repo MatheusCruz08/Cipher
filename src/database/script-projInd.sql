@@ -6,8 +6,7 @@ CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(60),
     email VARCHAR(80),
-    senha VARCHAR(30),
-    dtNasc DATE
+    senha VARCHAR(30)
 );
 
 CREATE TABLE pergunta (
@@ -28,7 +27,7 @@ CREATE TABLE resposta (
 CREATE TABLE resultadoQuiz (
     idResultado INT PRIMARY KEY AUTO_INCREMENT,
     fkUsuario   INT UNIQUE,
-    totalAcertos INT DEFAULT 0,
+    totalAcertos INT DEFAULT 0,cd 
     totalRespostas INT DEFAULT 0,
     dtUltimoQuiz DATETIME,
     CONSTRAINT fkResultadoUsuario FOREIGN KEY (fkUsuario)
